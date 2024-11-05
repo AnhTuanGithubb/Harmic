@@ -58,6 +58,7 @@ namespace Harmic.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                tbMenu.Alias = Harmic.Utilities.Function.TitleSlugGenerationAlias(tbMenu.Title);
                 _context.Add(tbMenu);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
