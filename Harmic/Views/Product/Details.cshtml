@@ -354,13 +354,13 @@
                                                 <div class="price-box pb-1">
                                                     @if (Model.PriceSale == 0)
                                                     {
-                                                        <span class="new-price text-danger">$@Model.Price</span>
+                                                        <span class="new-price text-danger">$@item.Price</span>
 
                                                     }
                                                     else
                                                     {
-                                                        <span class="new-price text-danger">$@Model.PriceSale </span>
-                                                        <span class="old-price text-primary">$@Model.Price</span>
+                                                        <span class="new-price text-danger">$@item.PriceSale </span>
+                                                        <span class="old-price text-primary">$@item.Price</span>
                                                     }
                                                 </div>
                                                 <div class="rating-box">
