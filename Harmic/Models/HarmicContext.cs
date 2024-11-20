@@ -45,7 +45,7 @@ public partial class HarmicContext : DbContext
 
     public virtual DbSet<TbRole> TbRoles { get; set; }
 
-    
+   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -99,7 +99,6 @@ public partial class HarmicContext : DbContext
 
             entity.ToTable("tb_BlogComment");
 
-            entity.Property(e => e.CommentId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Detail).HasMaxLength(200);
             entity.Property(e => e.Email).HasMaxLength(50);
@@ -136,7 +135,6 @@ public partial class HarmicContext : DbContext
 
             entity.ToTable("tb_Contact");
 
-            entity.Property(e => e.ContactId).ValueGeneratedNever();
             entity.Property(e => e.CreatedBy).HasMaxLength(150);
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Email).HasMaxLength(150);
@@ -293,7 +291,6 @@ public partial class HarmicContext : DbContext
 
             entity.ToTable("tb_ProductReview");
 
-            entity.Property(e => e.ProductReviewId).ValueGeneratedNever();
             entity.Property(e => e.CreatedDate).HasColumnType("datetime");
             entity.Property(e => e.Detail).HasMaxLength(200);
             entity.Property(e => e.Email).HasMaxLength(50);
