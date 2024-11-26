@@ -88,21 +88,23 @@
                                 <p class="short-desc mb-6">
                                     @Model.Description
                                 </p>
-                                <ul class="quantity-with-btn pb-7">
-                                    <li class="quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="1" type="text">
-                                        </div>
-                                    </li>
-                                    <li class="add-to-cart">
-                                        <a class="btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="cart.html">Add to cart</a>
-                                    </li>
-                                    <li class="wishlist-btn-wrap">
-                                        <a class="btn rounded-0" href="wishlist.html">
-                                            <i class="pe-7s-like"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+                                <form asp-action="AddToCart" asp-controller="Cart" asp-route-id="@Model.ProductId">
+                                    <ul class="quantity-with-btn pb-7">
+                                        <li class="quantity">
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" value="1" name ="sl" type="text">
+                                            </div>
+                                        </li>
+                                        <li class="add-to-cart">
+                                            <a class="ajax-add-to-cart btn btn-custom-size lg-size btn-primary btn-secondary-hover rounded-0" href="cart.html" data-id ="@Model.ProductId">Add to cart</a>
+                                        </li>
+                                        <li class="wishlist-btn-wrap">
+                                            <a class="btn rounded-0" href="wishlist.html">
+                                                <i class="pe-7s-like"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </form>
                                 <div class="product-category text-matterhorn pb-2">
                                     <span class="title">Categories :</span>
                                     <ul>

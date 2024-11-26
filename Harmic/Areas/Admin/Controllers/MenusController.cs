@@ -22,6 +22,7 @@ namespace Harmic.Areas.Admin.Controllers
         // GET: Admin/Menus
         public async Task<IActionResult> Index()
         {
+
             return View(await _context.TbMenus.ToListAsync());
         }
 
@@ -46,6 +47,7 @@ namespace Harmic.Areas.Admin.Controllers
         // GET: Admin/Menus/Create
         public IActionResult Create()
         {
+
             return View();
         }
 

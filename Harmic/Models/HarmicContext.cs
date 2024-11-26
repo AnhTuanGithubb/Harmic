@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Harmic.Areas.Admin.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Harmic.Models;
@@ -20,6 +21,8 @@ public partial class HarmicContext : DbContext
     public virtual DbSet<TbBlog> TbBlogs { get; set; }
 
     public virtual DbSet<TbBlogComment> TbBlogComments { get; set; }
+
+    public virtual DbSet<TbCart> TbCarts { get; set; }
 
     public virtual DbSet<TbCategory> TbCategories { get; set; }
 
@@ -45,7 +48,9 @@ public partial class HarmicContext : DbContext
 
     public virtual DbSet<TbRole> TbRoles { get; set; }
 
-   
+    public DbSet<AdminUser> AdminUsers { get; set; }
+
+ 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -108,6 +113,21 @@ public partial class HarmicContext : DbContext
             entity.HasOne(d => d.Blog).WithMany(p => p.TbBlogComments)
                 .HasForeignKey(d => d.BlogId)
                 .HasConstraintName("FK_tb_BlogComment_tb_Blog1");
+        });
+
+        modelBuilder.Entity<TbCart>(entity =>
+        {
+            entity.HasKey(e => e.CartId);
+
+            entity.ToTable("tb_Cart");
+
+            entity.Property(e => e.CreatedDate).HasColumnType("datetime");
+            entity.Property(e => e.Image).HasMaxLength(500);
+            entity.Property(e => e.Title).HasMaxLength(250);
+
+            entity.HasOne(d => d.Product).WithMany(p => p.TbCarts)
+                .HasForeignKey(d => d.ProductId)
+                .HasConstraintName("FK_tb_Cart_tb_Product");
         });
 
         modelBuilder.Entity<TbCategory>(entity =>
